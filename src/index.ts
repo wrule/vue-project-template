@@ -1,1 +1,10 @@
-console.log('你好，世界');
+import Vue from 'vue';
+import App from './app.vue';
+
+new Vue({
+  el: '#vue-app',
+  data: {
+    shared: false,
+  },
+  render: h => h(App),
+});
