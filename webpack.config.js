@@ -22,8 +22,15 @@ module.exports = {
         use: 'vue-loader',
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.module.scss$/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            },
+          },
+        }, 'sass-loader'],
       },
       {
         test: /\.tsx$/,
