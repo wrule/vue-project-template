@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test: /\.tsx$/,
-        use: 'ts-loader',
+        use: ['babel-loader', 'ts-loader'],
       },
     ],
   },
@@ -45,7 +45,7 @@ module.exports = {
     new WebpackBar({
       color: '#2baaff',
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
   devServer: {
     open: true,
