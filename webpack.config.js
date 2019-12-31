@@ -22,12 +22,12 @@ module.exports = {
         use: 'vue-loader',
       },
       {
-        test: /\.module.scss$/,
+        test: /\.mod.scss$/,
         use: ['style-loader', {
           loader: 'css-loader',
           options: {
             modules: {
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[local]__[path][name]-[hash:base64:5]',
             },
           },
         }, 'sass-loader'],
