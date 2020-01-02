@@ -3,6 +3,7 @@ import { VNode } from 'vue';
 import style from './index.mod.scss';
 import ComStudent from '../student';
 import Student from '../student/student';
+// import Params from '../ParamsEditor';
 
 @Component
 export default class App extends Vue {
