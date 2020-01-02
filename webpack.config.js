@@ -36,6 +36,10 @@ module.exports = {
         test: /\.tsx$/,
         use: ['babel-loader', 'ts-loader'],
       },
+      {
+        test: /\.ts$/,
+        use: ['babel-loader', 'ts-loader'],
+      },
     ],
   },
   resolve: {
