@@ -4,11 +4,6 @@ import style from './index.mod.scss';
 
 @Component
 export default class App extends Vue {
-
-  public mounted(): void {
-    console.log(style);
-  }
-
   // eslint-disable-next-line class-methods-use-this
   public render(): VNode {
     return (
