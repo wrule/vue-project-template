@@ -1,9 +1,9 @@
-/**
- * @enum 存储单位枚举
- */
-enum EnvUnit {
-  MB = 'm',
-  GB = 'g',
-};
-
-export default EnvUnit;
+namespace XXFox.Model.Env {
+  /**
+   * @enum 存储单位枚举
+   */
+  export enum EnvUnit {
+    MB = 'm',
+    GB = 'g',
+  };
+}
