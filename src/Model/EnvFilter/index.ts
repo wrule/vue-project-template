@@ -71,6 +71,15 @@ namespace XXFox.Model.Env {
       return `${this.MemSize.toString()}${this.MemUnit.toString()}`;
     }
 
+    /**
+     * @constructor 构造函数
+     * @param coreNum CPU核数
+     * @param memSize 内存大小
+     * @param memUnit 内存单位
+     * @param os 操作系统
+     * @param wordSize 字长
+     * @param jdkVersion JDK版本
+     */
     public constructor(
       coreNum: number,
       memSize: number,
