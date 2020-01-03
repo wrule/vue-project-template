@@ -1,3 +1,6 @@
+/**
+ * @enum JDK版本枚举
+ */
 enum EnvJDKVersion {
   JDK6 = 'jdk6',
   JDK7 = 'jdk7',

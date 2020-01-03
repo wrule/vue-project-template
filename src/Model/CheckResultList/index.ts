@@ -1,4 +1,5 @@
 import CheckResult from '../CheckResult';
+import CheckItem from '../CheckResult/CheckItem';
 
 export default class CheckResultList {
   private classified: boolean = true;
@@ -23,7 +24,14 @@ export default class CheckResultList {
     if (this.classified) {
       return this.resultList;
     } else {
-      return [];
+      // 不分类查看，整合成为一个栏目
+      const totalList: CheckItem[] = [];
+      this.resultList.forEach((result) => {
+        totalList.push(...result.Items);
+      });
+      return [
+        new CheckResult('全部', totalList),
+      ];
     }
   }
 
