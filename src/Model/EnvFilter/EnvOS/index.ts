@@ -1,7 +1,7 @@
 enum EnvOS {
-  Linux,
-  Windows,
-  MacOS,
+  Linux = 'linux',
+  Windows = 'windows',
+  MacOS = 'macos',
 };
 
 export default EnvOS;

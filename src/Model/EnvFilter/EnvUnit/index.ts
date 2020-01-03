@@ -1,6 +1,6 @@
 enum EnvUnit {
-  MB,
-  GB,
+  MB = 'm',
+  GB = 'g',
 };
 
 export default EnvUnit;
