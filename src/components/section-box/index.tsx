@@ -27,7 +27,9 @@ export default class XSectionBox extends Vue {
             {this.$slots.right}
           </div>
         </div>
-        <div class={style.content}></div>
+        <div class={style.content}>
+          {this.$slots.default}
+        </div>
       </div>
     );
   }

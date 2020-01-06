@@ -4,7 +4,6 @@ import style from './index.mod.scss';
 
 @Component
 export default class XViewTabs extends Vue {
-
   private curTab: string = '';
   
   @Watch('$route.query.tab', { immediate: true })
@@ -14,7 +13,14 @@ export default class XViewTabs extends Vue {
 
   private handleTabClick(cmd: string): void {
     if (cmd !== this.curTab) {
-      this.curTab = cmd;
+      this.$router.push({
+        name: this.$route.name,
+        query: {
+          ...this.$route.query,
+          tab: cmd,
+        },
+        params: this.$route.params,
+      });
     }
   }
 
