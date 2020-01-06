@@ -3,6 +3,8 @@ import { VNode } from 'vue';
 import style from './index.mod.scss';
 import ComStudent from '../student';
 import Student from '../student/student';
+import XSectionBox from '../components/section-box';
+import XFrameButton from '../components/frame-button';
 
 @Component
 export default class App extends Vue {
@@ -19,7 +21,14 @@ export default class App extends Vue {
   public render(): VNode {
     return (
       <div class={style.com}>
-        <ComStudent value={this.stu} />
+        {/* <ComStudent value={this.stu} /> */}
+        <XSectionBox title="最近两个版本差异分析">
+          <template slot="right">
+            <XFrameButton />
+          </template>
+        </XSectionBox>
+        <XSectionBox title="历史趋势跟踪分析" />
+        <XSectionBox title="详情对比" />
       </div>
     );
   }
