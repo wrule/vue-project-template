@@ -22,6 +22,14 @@ module.exports = {
         use: 'vue-loader',
       },
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
         test: /\.mod.scss$/,
         use: ['style-loader', {
           loader: 'css-loader',
@@ -39,6 +47,10 @@ module.exports = {
       {
         test: /\.ts$/,
         use: ['babel-loader', 'ts-loader'],
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
       },
     ],
   },
