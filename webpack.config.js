@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackBar = require('webpackbar');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const cacheLoaderFactory  = require('./webpack/loaderConfig/cacheLoaderFactory');
 
 module.exports = {
   mode: 'development',
@@ -19,34 +20,34 @@ module.exports = {
       },
       {
         test: /\.vue$/,
-        use: 'vue-loader',
+        use: [cacheLoaderFactory('vue-loader'), 'vue-loader'],
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
+      // {
+      //   test: /\.scss$/,
+      //   use: ['style-loader', 'css-loader', 'sass-loader'],
+      // },
       {
         test: /\.mod.scss$/,
-        use: ['style-loader', {
+        use: [cacheLoaderFactory('css-loader'), 'style-loader', {
           loader: 'css-loader',
           options: {
             modules: {
               localIdentName: '[local]__[path][name]-[hash:base64:5]',
             },
           },
-        }, 'sass-loader'],
+        }, 'postcss-loader', 'sass-loader'],
       },
       {
         test: /\.tsx$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: [cacheLoaderFactory('tsx-loader'), 'babel-loader', 'ts-loader'],
       },
       {
         test: /\.ts$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: [cacheLoaderFactory('ts-loader'), 'babel-loader', 'ts-loader'],
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

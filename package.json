@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack",
-    "test": "node dist/index.js"
+    "test": "node src/test-node.js"
   },
   "repository": "https://github.com/wrule/vue-project-template",
   "author": "鸡毛 <shihao.gu@perfma.com>",
@@ -20,6 +20,7 @@
     "@babel/preset-typescript": "^7.7.7",
     "@vue/babel-preset-jsx": "^1.1.2",
     "babel-loader": "^8.0.6",
+    "cache-loader": "^4.1.0",
     "core-js": "^3.6.1",
     "css-loader": "^3.4.0",
     "html-webpack-plugin": "^3.2.0",
