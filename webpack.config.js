@@ -76,6 +76,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.tsx', '.jsx', '.vue', '.json'],
     alias: {
       '@': path.join(process.cwd(), 'src'),
+      ':': path.join(process.cwd(), 'static'),
       vue$: 'vue/dist/vue.esm.js',
     },
     modules: ['node_modules'],
