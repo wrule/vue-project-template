@@ -2,9 +2,19 @@
   "jumpToAliasFile.alias": {
     "vue$": "vue/dist/vue.esm.js",
     "@": "${folder}/src",
-    ":": "${folder}/static"
+    ":": "${folder}/public",
+  },
+  "path-autocomplete.extensionOnImport": false,
+  "path-autocomplete.includeExtension": false,
+  "path-autocomplete.excludedItems": {
+    // "**/*.js": { "when": "**/*.ts" }, // ignore js files if i'm inside a ts file
+    "**/*.map": { "when": "**" }, // always ignore *.map files
+    "**/{.git,node_modules}": { "when": "**" }, // always ignore .git and node_modules folders
+    "**/*.d.ts": { "when": "**" },
+    "**/.DS_Store": { "when": "**" },
   },
   "path-autocomplete.pathMappings": {
-    "@": "${folder}/src", // the absolute root folder is now /src,
+    "@": "${folder}/src",
+    ":": "${folder}/public",
   },
 }
