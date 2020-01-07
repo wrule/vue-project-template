@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackBar = require('webpackbar');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const cacheLoaderFactory  = require('./webpack/loaderConfig/cacheLoaderFactory');
 
 module.exports = {
   mode: 'development',
@@ -14,38 +15,59 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        use: 'url-loader',
+        test: /\.vue$/i,
+        use: [cacheLoaderFactory('vue-loader'), 'vue-loader'],
       },
       {
-        test: /\.vue$/,
-        use: 'vue-loader',
-      },
-      {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // {
+      //   test: /\.scss$/,
+      //   use: ['style-loader', 'css-loader', 'sass-loader'],
+      // },
       {
-        test: /\.mod.scss$/,
-        use: ['style-loader', {
+        test: /\.mod.scss$/i,
+        use: ['thread-loader', cacheLoaderFactory('css-loader'), 'style-loader', {
           loader: 'css-loader',
           options: {
             modules: {
               localIdentName: '[local]__[path][name]-[hash:base64:5]',
             },
           },
-        }, 'sass-loader'],
+        }, 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.tsx$/,
-        use: ['babel-loader', 'ts-loader'],
+        test: /\.tsx$/i,
+        use: [cacheLoaderFactory('tsx-loader'), 'thread-loader', 'babel-loader', {
+          loader: 'ts-loader',
+          options: {
+            happyPackMode: true,
+          },
+        }],
       },
       {
-        test: /\.ts$/,
-        use: ['babel-loader', 'ts-loader'],
+        test: /\.ts$/i,
+        use: [cacheLoaderFactory('ts-loader'), 'thread-loader', 'babel-loader', {
+          loader: 'ts-loader',
+          options: {
+            happyPackMode: true,
+          },
+        }],
       },
+      // 图片处理
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
+        use: 'url-loader',
+      },
+      // 媒体资源处理
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i,
+        loader: 'url-loader',
+      },
+      // 字体资源处理
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
         loader: 'url-loader',
       },
     ],
@@ -69,7 +91,7 @@ module.exports = {
   devServer: {
     open: true,
     hot: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(process.cwd(), 'dist'),
     compress: true,
     host: '0.0.0.0',
     port: 9000,
