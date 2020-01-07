@@ -3,7 +3,7 @@ import { VNode } from 'vue';
 import style from './index.mod.scss';
 
 @Component
-export default class XMXx extends Vue {
+export default class X extends Vue {
   // eslint-disable-next-line class-methods-use-this
   public render(): VNode {
     return (
