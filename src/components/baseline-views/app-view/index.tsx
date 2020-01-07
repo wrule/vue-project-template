@@ -3,6 +3,7 @@ import { VNode } from 'vue';
 import XSectionBox from '../../../components/section-box';
 import XFrameButton from '../../../components/frame-button';
 import XDiffTable from './diff-table';
+import XLineChart from '../../line-chart';
 import style from './index.mod.scss';
 
 @Component
@@ -21,8 +22,12 @@ export default class XAppView extends Vue {
           </template>
           <XDiffTable />
         </XSectionBox>
-        <XSectionBox title="历史趋势跟踪分析" />
-        <XSectionBox title="详情对比" />
+        <XSectionBox title="历史趋势跟踪分析">
+          <XLineChart />
+        </XSectionBox>
+        <XSectionBox title="详情对比">
+          <XLineChart />
+        </XSectionBox>
       </div>
     );
   }
