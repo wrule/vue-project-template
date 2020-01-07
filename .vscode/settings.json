@@ -2,7 +2,7 @@
   "jumpToAliasFile.alias": {
     "vue$": "vue/dist/vue.esm.js",
     "@": "${folder}/src",
-    ":": "${folder}/public",
+    ":": "${folder}/static",
   },
   "path-autocomplete.extensionOnImport": false,
   "path-autocomplete.includeExtension": false,
@@ -15,6 +15,6 @@
   },
   "path-autocomplete.pathMappings": {
     "@": "${folder}/src",
-    ":": "${folder}/public",
+    ":": "${folder}/static",
   },
 }
