@@ -74,6 +74,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js', '.tsx', '.jsx', '.vue', '.json'],
+    alias: {
+      '@': path.join(process.cwd(), 'src'),
+      vue$: 'vue/dist/vue.esm.js',
+    },
+    modules: ['node_modules'],
   },
   plugins: [
     new HtmlWebpackPlugin({

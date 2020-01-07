@@ -1,0 +1,275 @@
+{
+  "id": "1383036",
+  "name": "xxfox",
+  "font_family": "console-opts",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10681274",
+      "name": "参数变迁",
+      "font_class": "canshubianqian",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "10681275",
+      "name": "参数查询",
+      "font_class": "canshuchaxun",
+      "unicode": "e6c9",
+      "unicode_decimal": 59081
+    },
+    {
+      "icon_id": "10681276",
+      "name": "参数检查",
+      "font_class": "canshujiancha",
+      "unicode": "e6ca",
+      "unicode_decimal": 59082
+    },
+    {
+      "icon_id": "10681277",
+      "name": "参数生成",
+      "font_class": "canshushengcheng",
+      "unicode": "e6cb",
+      "unicode_decimal": 59083
+    },
+    {
+      "icon_id": "10681278",
+      "name": "JVM的副本",
+      "font_class": "JVMdefuben",
+      "unicode": "e6cc",
+      "unicode_decimal": 59084
+    },
+    {
+      "icon_id": "10681279",
+      "name": "超链接",
+      "font_class": "chaolianjie",
+      "unicode": "e6cd",
+      "unicode_decimal": 59085
+    },
+    {
+      "icon_id": "10681280",
+      "name": "参数优化",
+      "font_class": "canshuyouhua",
+      "unicode": "e6ce",
+      "unicode_decimal": 59086
+    },
+    {
+      "icon_id": "10686143",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e6cf",
+      "unicode_decimal": 59087
+    },
+    {
+      "icon_id": "10686144",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e6d0",
+      "unicode_decimal": 59088
+    },
+    {
+      "icon_id": "10686145",
+      "name": "复制",
+      "font_class": "fuzhi",
+      "unicode": "e6d1",
+      "unicode_decimal": 59089
+    },
+    {
+      "icon_id": "10691533",
+      "name": "评论",
+      "font_class": "pinglun",
+      "unicode": "e6d2",
+      "unicode_decimal": 59090
+    },
+    {
+      "icon_id": "10691565",
+      "name": "展开",
+      "font_class": "zhankai",
+      "unicode": "e6d3",
+      "unicode_decimal": 59091
+    },
+    {
+      "icon_id": "10691566",
+      "name": "收起",
+      "font_class": "shouqi",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
+    {
+      "icon_id": "10699223",
+      "name": "和环境不匹配的参数",
+      "font_class": "hehuanjingbupipeidecanshu",
+      "unicode": "e6e8",
+      "unicode_decimal": 59112
+    },
+    {
+      "icon_id": "10699224",
+      "name": "冗余定义的参数",
+      "font_class": "rongyudingyidecanshu",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    },
+    {
+      "icon_id": "10699225",
+      "name": "值不合理的参数",
+      "font_class": "zhibuhelidecanshu",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "10699226",
+      "name": "值被覆盖的参数",
+      "font_class": "zhibeifugaidecanshu",
+      "unicode": "e6eb",
+      "unicode_decimal": 59115
+    },
+    {
+      "icon_id": "10699227",
+      "name": "和默认值一样的参数",
+      "font_class": "hemorenzhiyiyangdecanshu",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    },
+    {
+      "icon_id": "10699230",
+      "name": "自动过滤非{-xx，-x，-}开头的参数",
+      "font_class": "zidongguolvfei-xx-x-kaitoudecanshu",
+      "unicode": "e6ed",
+      "unicode_decimal": 59117
+    },
+    {
+      "icon_id": "10699231",
+      "name": "表达式异常的参数",
+      "font_class": "biaodashiyichangdecanshu",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
+      "icon_id": "10699240",
+      "name": "需要注意的",
+      "font_class": "xuyaozhuyide",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "10699241",
+      "name": "不存在的参数",
+      "font_class": "bucunzaidecanshu",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "10699242",
+      "name": "需要额外增加的参数",
+      "font_class": "xuyaoewaizengjiadecanshu",
+      "unicode": "e6f1",
+      "unicode_decimal": 59121
+    },
+    {
+      "icon_id": "10699243",
+      "name": "可以删除的参数",
+      "font_class": "keyishanchudecanshu",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
+      "icon_id": "10699244",
+      "name": "已经废除的参数",
+      "font_class": "yijingfeichudecanshu",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
+      "icon_id": "10699246",
+      "name": "冲突的参数",
+      "font_class": "chongtudecanshu",
+      "unicode": "e6f4",
+      "unicode_decimal": 59124
+    },
+    {
+      "icon_id": "10699247",
+      "name": "不正确的参数依赖",
+      "font_class": "buzhengquedecanshuyilai",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
+    },
+    {
+      "icon_id": "10699248",
+      "name": "存在定义顺序问题的参数",
+      "font_class": "cunzaidingyishunxuwentidecanshu",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    },
+    {
+      "icon_id": "10699249",
+      "name": "需要被替换为其他参数的参数",
+      "font_class": "xuyaobeitihuanweiqitacanshudecanshu",
+      "unicode": "e6f7",
+      "unicode_decimal": 59127
+    },
+    {
+      "icon_id": "10819188",
+      "name": "环境",
+      "font_class": "huanjing",
+      "unicode": "e6f8",
+      "unicode_decimal": 59128
+    },
+    {
+      "icon_id": "10819189",
+      "name": "特定JDK版本下的参数问题",
+      "font_class": "tedingJDKbanbenxiadecanshuwenti",
+      "unicode": "e6f9",
+      "unicode_decimal": 59129
+    },
+    {
+      "icon_id": "10819190",
+      "name": "非固定",
+      "font_class": "feiguding",
+      "unicode": "e6fa",
+      "unicode_decimal": 59130
+    },
+    {
+      "icon_id": "10819191",
+      "name": "固定",
+      "font_class": "guding",
+      "unicode": "e6fb",
+      "unicode_decimal": 59131
+    },
+    {
+      "icon_id": "12470426",
+      "name": "参数生成",
+      "font_class": "canshushengcheng1",
+      "unicode": "e6fc",
+      "unicode_decimal": 59132
+    },
+    {
+      "icon_id": "12470427",
+      "name": "参数变迁",
+      "font_class": "canshubianqian1",
+      "unicode": "e6fd",
+      "unicode_decimal": 59133
+    },
+    {
+      "icon_id": "12470428",
+      "name": "参数检查",
+      "font_class": "canshujiancha1",
+      "unicode": "e6fe",
+      "unicode_decimal": 59134
+    },
+    {
+      "icon_id": "12470429",
+      "name": "参数查询",
+      "font_class": "canshuchaxun1",
+      "unicode": "e6ff",
+      "unicode_decimal": 59135
+    },
+    {
+      "icon_id": "12470430",
+      "name": "参数优化",
+      "font_class": "canshuyouhua1",
+      "unicode": "e700",
+      "unicode_decimal": 59136
+    }
+  ]
+}

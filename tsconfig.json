@@ -9,7 +9,7 @@
     "module": "esnext",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // 是否允许编译JS文件
-    // "allowJs": true,                       /* Allow javascript files to be compiled. */
+    "allowJs": true,                       /* Allow javascript files to be compiled. */
     // 上报JS文件的错误
     // "checkJs": true,                       /* Report errors in .js files. */
     // 开启JSX
@@ -48,8 +48,12 @@
     /* Module Resolution Options */
     // 以Node的方式处理模块
     "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
-    // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
-    // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
+    "baseUrl": ".",                       /* Base directory to resolve non-absolute module names. */
+    "paths": {
+      "@/*": [
+        "src/*",
+      ],
+    },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */
     // "types": [],                           /* Type declaration files to be included in compilation. */

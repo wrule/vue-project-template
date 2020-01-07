@@ -8,7 +8,7 @@
     "test": "node src/test-node.js"
   },
   "repository": "https://github.com/wrule/vue-project-template",
-  "author": "鸡毛 <shihao.gu@perfma.com>",
+  "author": "鸡毛 <1982775886@qq.com>",
   "license": "MIT",
   "private": false,
   "dependencies": {

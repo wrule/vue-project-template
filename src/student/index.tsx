@@ -13,6 +13,7 @@ export default class ComStudent extends Vue {
         <li>
           <span>姓名：</span>
           <span>{this.value.Name}</span>
+          <i class="icon iconcanshubianqian1"></i>
         </li>
         <li>
           <span>性别：</span>

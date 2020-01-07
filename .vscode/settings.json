@@ -1,0 +1,10 @@
+{
+  "jumpToAliasFile.alias": {
+    "vue$": "vue/dist/vue.esm.js",
+    "@": "${folder}/src",
+    ":": "${folder}/static"
+  },
+  "path-autocomplete.pathMappings": {
+    "@": "${folder}/src", // the absolute root folder is now /src,
+  },
+}
