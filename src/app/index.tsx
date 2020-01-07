@@ -2,7 +2,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import { VNode } from 'vue';
 import style from './index.mod.scss';
 import ComStudent from '../student';
-import Student from '@/student/index';
+import Student from '@/student/student';
 
 @Component
 export default class App extends Vue {
