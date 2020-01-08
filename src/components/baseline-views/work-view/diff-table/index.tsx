@@ -6,6 +6,7 @@ import style from './index.mod.scss';
 @Component
 export default class XDiffTable extends Vue {
   @Prop({ default: [] }) private readonly data!: any[];
+
   // eslint-disable-next-line class-methods-use-this
   public render(): VNode {
     return (
@@ -32,12 +33,30 @@ export default class XDiffTable extends Vue {
           </el-table-column>
           <el-table-column
             label="成功率"
-            sortable>
+            sortable
+            {
+              ...{
+                scopedSlots: {
+                  default: (props: any) => {
+                    return <span>{`${Number((props.row.successPercent * 100).toFixed(2))}%`}</span>
+                  },
+                }
+              }
+            }>
             <span slot-scope="slot">{}</span>
           </el-table-column>
           <el-table-column
             label="TPS(S)"
-            sortable>
+            sortable
+            {
+              ...{
+                scopedSlots: {
+                  default: (props: any) => {
+                    return <span>{props.row.successTps}</span>
+                  },
+                }
+              }
+            }>
           </el-table-column>
         </el-table>
       </div>
