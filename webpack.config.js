@@ -124,7 +124,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000,
+              limit: 2048,
             },
           },
         ],
@@ -136,7 +136,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000,
+              limit: 2048,
             },
           },
         ],
@@ -148,7 +148,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000,
+              limit: 2048,
             },
           },
         ],
