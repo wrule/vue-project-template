@@ -4,9 +4,39 @@ import XSectionBox from '../../../components/section-box';
 import XFrameButton from '../../../components/frame-button';
 import XDiffTable from './diff-table';
 import style from './index.mod.scss';
+import * as API from '../../../api/';
 
 @Component
 export default class XWordView extends Vue {
+
+  private list: any[] = [];
+
+  private get autoIds(): string[] {
+    return (this.$route.params.session || '').split('~');
+  }
+
+  private async updateTable(
+    id1: string,
+    id2: string,
+  ): Promise<void> {
+    const rsp: any = await API.reportSummaryCompare({
+      firstReportId: id1,
+      secondReportId: id2,
+    });
+    if (rsp.success) {
+      this.list = Object.entries(rsp.object || {}).map((ary) => ({
+        name: ary[0],
+      }));
+      console.log(this.list);
+    }
+  }
+
+
+  public mounted(): void {
+    this.updateTable(this.autoIds[0], this.autoIds[1]);
+  }
+
+
   // eslint-disable-next-line class-methods-use-this
   public render(): VNode {
     return (
@@ -19,7 +49,9 @@ export default class XWordView extends Vue {
             <XFrameButton class={style.framebutton} icon="icon icon-jiaoben-cebianlan">数据差异</XFrameButton>
             <XFrameButton class={style.framebutton}>更换版本</XFrameButton>
           </template>
-          <XDiffTable />
+          <XDiffTable
+            data={this.list}
+          />
         </XSectionBox>
         <XSectionBox title="历史趋势跟踪分析" />
         <XSectionBox title="详情对比" />

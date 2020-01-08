@@ -1,16 +1,18 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { VNode } from 'vue';
 import XDiffNum from '../../../diff-num';
 import style from './index.mod.scss';
 
 @Component
 export default class XDiffTable extends Vue {
+  @Prop({ default: [] }) private readonly data!: any[];
   // eslint-disable-next-line class-methods-use-this
   public render(): VNode {
     return (
       <div class={style.com}>
-        <el-table data={[1, 2, 3, 4]}>
+        <el-table data={this.data}>
           <el-table-column
+            prop="name"
             label="事务名">
           </el-table-column>
           <el-table-column

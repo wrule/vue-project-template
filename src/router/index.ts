@@ -7,9 +7,9 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      name: 'view-index',
-      path: '/',
-      component: () => import('../views/index'),
+      name: 'view-baselines-compare',
+      path: '/baselines/compare/:session',
+      component: () => import('../views/baselines-compare'),
     },
     {
       name: 'view-scene-detail',
