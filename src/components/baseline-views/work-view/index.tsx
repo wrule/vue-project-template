@@ -26,6 +26,26 @@ export default class XWordView extends Vue {
     if (rsp.success) {
       this.list = Object.entries(rsp.object || {}).map((ary) => ({
         name: ary[0],
+        successAvgResponseTime:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successAvgResponseTime') || {}).metricCurrentValue,
+        successAvgResponseTimeDiff:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successAvgResponseTime') || {}).metricDiffValue,
+        successMinResponseTime:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successMinResponseTime') || {}).metricCurrentValue,
+        successMinResponseTimeDiff:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successMinResponseTime') || {}).metricDiffValue,
+        successMaxResponseTime:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successMaxResponseTime') || {}).metricCurrentValue,
+        successMaxResponseTimeDiff:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successMaxResponseTime') || {}).metricDiffValue,
+        successPercent:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successPercent') || {}).metricCurrentValue,
+        successPercentDiff:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successPercent') || {}).metricDiffValue,
+        successTps:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successTps') || {}).metricCurrentValue,
+        successTpsDiff:
+          (((ary[1] || []) as any[]).find((item) => item.requestMetric === 'successTps') || {}).metricDiffValue,
       }));
       console.log(this.list);
     }

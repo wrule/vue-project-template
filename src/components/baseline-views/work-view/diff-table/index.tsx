@@ -33,6 +33,7 @@ export default class XDiffTable extends Vue {
           <el-table-column
             label="成功率"
             sortable>
+            <span slot-scope="slot">{}</span>
           </el-table-column>
           <el-table-column
             label="TPS(S)"
