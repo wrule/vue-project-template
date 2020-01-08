@@ -14,61 +14,144 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.vue$/i,
-        use: [cacheLoaderFactory('vue-loader'), 'vue-loader'],
-      },
+      // css文件
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        exclude: /\.mod.css$/i,
+        use: [
+          cacheLoaderFactory('css-loader'),
+          'thread-loader',
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+        ],
       },
-      // {
-      //   test: /\.scss$/,
-      //   use: ['style-loader', 'css-loader', 'sass-loader'],
-      // },
+      // scss文件
       {
-        test: /\.mod.scss$/i,
-        use: ['thread-loader', cacheLoaderFactory('css-loader'), 'style-loader', {
-          loader: 'css-loader',
-          options: {
-            modules: {
-              localIdentName: '[local]__[path][name]-[hash:base64:5]',
+        test: /\.scss$/i,
+        exclude: /\.mod.scss$/i,
+        use: [
+          cacheLoaderFactory('scss-loader'),
+          'thread-loader',
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
+      // mod.css文件
+      {
+        test: /\.mod.css$/i,
+        use: [
+          cacheLoaderFactory('css-mod-loader'),
+          'thread-loader',
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]__[path][name]-[hash:base64:5]',
+              },
             },
           },
-        }, 'postcss-loader', 'sass-loader'],
+          'postcss-loader',
+        ],
       },
+      // mod.scss文件
       {
-        test: /\.tsx$/i,
-        use: [cacheLoaderFactory('tsx-loader'), 'thread-loader', 'babel-loader', {
-          loader: 'ts-loader',
-          options: {
-            happyPackMode: true,
+        test: /\.mod.scss$/i,
+        use: [
+          cacheLoaderFactory('scss-mod-loader'),
+          'thread-loader',
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]__[path][name]-[hash:base64:5]',
+              },
+            },
           },
-        }],
+          'postcss-loader',
+          'sass-loader',
+        ],
       },
+
+      // ts文件
       {
         test: /\.ts$/i,
-        use: [cacheLoaderFactory('ts-loader'), 'thread-loader', 'babel-loader', {
-          loader: 'ts-loader',
-          options: {
-            happyPackMode: true,
+        use: [
+          cacheLoaderFactory('tsx-loader'),
+          'thread-loader',
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              happyPackMode: true,
+            },
           },
-        }],
+        ],
       },
+      // tsx文件
+      {
+        test: /\.tsx$/i,
+        use: [
+          cacheLoaderFactory('tsx-loader'),
+          'thread-loader',
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: {
+              happyPackMode: true,
+            },
+          },
+        ],
+      },
+      // vue文件
+      {
+        test: /\.vue$/i,
+        use: [
+          cacheLoaderFactory('vue-loader'),
+          'thread-loader',
+          'vue-loader',
+        ],
+      },
+
       // 图片处理
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/i,
-        use: 'url-loader',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000,
+            },
+          },
+        ],
       },
       // 媒体资源处理
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/i,
-        loader: 'url-loader',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000,
+            },
+          },
+        ],
       },
       // 字体资源处理
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-        loader: 'url-loader',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1000,
+            },
+          },
+        ],
       },
     ],
   },
