@@ -24,8 +24,8 @@ export default class App extends Vue {
       <div class={style.com}>
         <ComStudent value={this.stu} />
         <img src={panda} />
-        <img src={cxk} />
-        <video src={mp4}></video>
+        {/* <img src={cxk} /> */}
+        {/* <video src={mp4}></video> */}
       </div>
     );
   }

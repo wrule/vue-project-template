@@ -9,8 +9,9 @@ module.exports = {
   mode: 'development',
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
+    path: path.join(process.cwd(), 'dist'),
+    publicPath: '/',
   },
   module: {
     rules: [
