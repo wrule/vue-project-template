@@ -1,17 +1,19 @@
 {
-  "include": [
-    "./src/**/*"
-  ],
   "compilerOptions": {
-    "target": "es6",
+    "target": "esnext",
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
+        "src/*",
       ],
       ":/*": [
         "static/*",
       ],
     },
-  }
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.vue",
+  ],
 }
