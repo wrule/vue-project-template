@@ -10,6 +10,7 @@ module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'index.js',
   },
   module: {
@@ -95,6 +96,27 @@ module.exports = {
     compress: true,
     host: '0.0.0.0',
     port: 9000,
-    proxy: {},
+    proxy: {
+      '/api/acl': {
+        target: 'http://midware.dev.perfma-inc.net:17920/',
+        changeOrigin: false,
+      },
+      "/api/xspider": {
+        target: "http://xspider.dev.perfma-inc.net:17934",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/api": {
+          target: "http://192.168.0.36:17922/",
+          changeOrigin: true,
+          secure: false,
+      },
+      "/login": {
+          target: 'http://login-u.dev.perfma-inc.net',
+          changeOrigin: true,
+          secure: false,
+      },
+    },
+    historyApiFallback: true,
   },
 };
