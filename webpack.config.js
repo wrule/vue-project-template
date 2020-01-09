@@ -5,6 +5,8 @@ const WebpackBar = require('webpackbar');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const cacheLoaderFactory  = require('./webpack/loaderConfig/cacheLoaderFactory');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -15,6 +17,15 @@ module.exports = {
     publicPath: '/',
     filename: 'js/[name].[chunkhash].js',
     chunkFilename: 'js/[name].[chunkhash].js',
+  },
+  devtool: false,
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      // extractComments: false,
+      cache: true,
+      parallel: true,
+    })],
   },
   module: {
     rules: [
@@ -189,6 +200,12 @@ module.exports = {
     new WebpackBar({
       color: '#2baaff',
     }),
+    // new CompressionPlugin(),
+    // 用来压缩Js代码
+    // new MinifyJsPlugin({
+    //   cache: true,
+    //   parallel: true,
+    // }),
     // new BundleAnalyzerPlugin(),
   ],
   devServer: {
