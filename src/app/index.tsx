@@ -4,7 +4,7 @@ import style from './index.mod.scss';
 import ComStudent from '../student';
 import Student from '@/student/student';
 import panda from ':/image/panda.jpg';
-import cxk from ':/image/cxk.gif';
+import cxk from ':/image/蔡徐坤.gif';
 import mp4 from ':/image/girl.mp4';
 
 @Component
@@ -24,8 +24,8 @@ export default class App extends Vue {
       <div class={style.com}>
         <ComStudent value={this.stu} />
         <img src={panda} />
-        {/* <img src={cxk} /> */}
-        {/* <video src={mp4}></video> */}
+        <img src={cxk} />
+        <video src={mp4}></video>
       </div>
     );
   }
