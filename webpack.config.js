@@ -7,6 +7,7 @@ const cacheLoaderFactory  = require('./webpack/loaderConfig/cacheLoaderFactory')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -21,11 +22,14 @@ module.exports = {
   devtool: false,
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin({
-      // extractComments: false,
-      cache: true,
-      parallel: true,
-    })],
+    minimizer: [
+      new TerserPlugin({
+        // extractComments: false,
+        cache: true,
+        parallel: true,
+      }),
+      new OptimizeCSSAssetsPlugin({}),
+    ],
   },
   module: {
     rules: [
