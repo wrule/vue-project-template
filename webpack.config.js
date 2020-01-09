@@ -125,7 +125,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: '[hash:8].[ext]',
+              name: 'image/[hash:8].[ext]',
               limit: 2048,
             },
           },
@@ -138,7 +138,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: '[hash:8].[ext]',
+              name: 'media/[hash:8].[ext]',
               limit: 2048,
             },
           },
@@ -151,7 +151,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              name: '[hash:8].[ext]',
+              name: 'font/[hash:8].[ext]',
               limit: 2048,
             },
           },
