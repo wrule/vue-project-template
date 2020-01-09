@@ -189,5 +189,9 @@ module.exports = {
     host: '0.0.0.0',
     port: 9000,
     proxy: {},
+    clientLogLevel: 'warning',
+    // webpack-dev-server重写404响应
+    // https://webpack.js.org/configuration/dev-server/#devserverhistoryapifallback
+    historyApiFallback: true,
   },
 };

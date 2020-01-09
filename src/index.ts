@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import App from './app/index';
 import router from '@/router';
-import '@/student/';
 import ':/iconfont/iconfont.css';
 
 new Vue({

@@ -1,5 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { VNode } from 'vue';
+import panda from ':/image/panda.jpg';
 import style from './index.mod.scss';
 
 @Component
@@ -13,6 +14,7 @@ export default class ViewIndex extends Vue {
       <div class={style.com}>
         <div>
           <span>主页</span>
+          <img src={panda} />
         </div>
         <div>
           <router-link to={{ name: 'view-query', params: { id: '123' } }}>查询</router-link>
