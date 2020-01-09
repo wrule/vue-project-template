@@ -8,6 +8,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TypeScript = require('typescript');
+const colors = require('colors');
+const Webpack = require('webpack');
+const Vue = require('vue');
+
+console.log('👴 前端老汉推车了 🚚 ...');
+console.log('[--------------项目主要依赖版本--------------]'.green);
+console.log(
+  ` TypeScript ${TypeScript.version} `.bgBlue.white,
+  ` Webpack ${Webpack.version} `.bgCyan.white,
+  ` Vue ${Vue.version} `.bgGreen.white
+);
+console.log();
 
 module.exports = {
   mode: 'development',
