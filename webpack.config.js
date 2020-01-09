@@ -4,6 +4,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const WebpackBar = require('webpackbar');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const cacheLoaderFactory  = require('./webpack/loaderConfig/cacheLoaderFactory');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,6 +13,8 @@ module.exports = {
     filename: 'index.js',
     path: path.join(process.cwd(), 'dist'),
     publicPath: '/',
+    filename: 'js/[name].[chunkhash].js',
+    chunkFilename: 'js/[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -20,9 +23,10 @@ module.exports = {
         test: /\.css$/i,
         exclude: /\.mod.css$/i,
         use: [
+          MiniCssExtractPlugin.loader,
           cacheLoaderFactory('css-loader'),
-          'thread-loader',
-          'style-loader',
+          // 'thread-loader',
+          // 'style-loader',
           'css-loader',
           'postcss-loader',
         ],
@@ -32,9 +36,10 @@ module.exports = {
         test: /\.scss$/i,
         exclude: /\.mod.scss$/i,
         use: [
+          MiniCssExtractPlugin.loader,
           cacheLoaderFactory('scss-loader'),
-          'thread-loader',
-          'style-loader',
+          // 'thread-loader',
+          // 'style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader',
@@ -44,9 +49,10 @@ module.exports = {
       {
         test: /\.mod.css$/i,
         use: [
+          MiniCssExtractPlugin.loader,
           cacheLoaderFactory('css-mod-loader'),
-          'thread-loader',
-          'style-loader',
+          // 'thread-loader',
+          // 'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -62,9 +68,10 @@ module.exports = {
       {
         test: /\.mod.scss$/i,
         use: [
+          MiniCssExtractPlugin.loader,
           cacheLoaderFactory('scss-mod-loader'),
-          'thread-loader',
-          'style-loader',
+          // 'thread-loader',
+          // 'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -169,6 +176,9 @@ module.exports = {
     modules: ['node_modules'],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:8].css',
+    }),
     new HtmlWebpackPlugin({
       title: 'Webpack测试页面',
       filename: 'index.html',
