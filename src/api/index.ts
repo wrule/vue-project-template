@@ -7,3 +7,15 @@ export const queryBaselineByRangeTime = (params: any) => {
 export const reportSummaryCompare = (params: any) => {
   return http.post(`xsea/report/reportSummaryCompare`, params);
 };
+
+export const clusterIndicatorDataComparing = (params: any) => {
+  return http.post(`xsea/report/clusterIndicatorDataComparing`, {}, {params});
+};
+
+export const clusterIndicatorDataTrend = (params: any) => {
+  return http.post(`xsea/report/clusterIndicatorDataTrend`, {}, {params});
+};
+
+export const clusterRunningDataTrendCatalog = (params: any) => {
+  return http.post(`xsea/report/clusterRunningDataTrendCatalog`, {}, {params});
+};

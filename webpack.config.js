@@ -107,10 +107,10 @@ module.exports = {
         secure: false,
       },
       "/api": {
-          target: "http://192.168.0.36:17922/",
-          changeOrigin: true,
-          secure: false,
-      },
+        target: "http://xsea-u.dev.perfma-inc.net",
+        changeOrigin: true,
+        secure: false,
+    },
       "/login": {
           target: 'http://login-u.dev.perfma-inc.net',
           changeOrigin: true,

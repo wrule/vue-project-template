@@ -9,19 +9,36 @@ export default class XDiffNum extends Vue {
    */
   @Prop({ default: 0 }) private readonly value!: number;
   /**
-   * 上一个值
+   * 当前值减去旧值的差值
+   */
+  @Prop({ default: undefined }) private readonly diff!: number | undefined;
+  /**
+   * 上一个值（在设置了差值的时候此值无效）
    */
   @Prop({ default: 0 }) private readonly prevValue!: number;
+  /**
+   * 是否是以百分比形式显示
+   */
+  @Prop({ default: false }) private readonly percent!: boolean;
 
-
-  private get autoValue(): number {
-    return Number(this.value.toFixed(2));
+  /**
+   * 根据diff或者是直接选取prevValue来定义比对值
+   */
+  private get autoPrevValueCom(): number {
+    if (this.diff === undefined) {
+      return this.prevValue;
+    } else {
+      return this.value - this.diff;
+    }
   }
-  private get autoPrevValue(): number {
-    return Number(this.prevValue.toFixed(2));
+  private get autoValue(): string {
+    return Number(this.value.toFixed(2)).toString() + (this.percent ? '%' : '');
+  }
+  private get autoPrevValue(): string {
+    return Number(this.autoPrevValueCom.toFixed(2)).toString() + (this.percent ? '%' : '');
   }
   private get autoState(): number {
-    const diff = this.value - this.prevValue;
+    const diff = this.value - this.autoPrevValueCom;
     if (diff > 0) {
       return 2;
     } else if (diff < 0) {
@@ -41,8 +58,12 @@ export default class XDiffNum extends Vue {
     return icons[this.autoState];
   }
   private get autoPercentage(): number {
-    const diff = this.value - this.prevValue;
-    return Number(((diff / this.prevValue) * 100).toFixed(2));
+    const diff = this.value - this.autoPrevValueCom;
+    if (this.autoPrevValueCom) {
+      return Number(((diff / this.autoPrevValueCom) * 100).toFixed(2));
+    } else {
+      return 0;
+    }
   }
   private get autoSummary(): string {
     if (this.autoState === 0) {
