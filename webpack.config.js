@@ -223,7 +223,11 @@ module.exports = {
       color: '#2baaff',
     }),
     new CopyWebpackPlugin([
-      { from: path.join(process.cwd(), 'public'), to: path.join(process.cwd(), 'dist') },
+      {
+        from: path.join(process.cwd(), 'public'),
+        to: path.join(process.cwd(), 'dist'),
+        ignore: ['readme.txt'],
+      },
     ]),
     // new CompressionPlugin(),
     // 用来压缩Js代码
