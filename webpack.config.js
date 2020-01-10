@@ -12,6 +12,7 @@ const TypeScript = require('typescript');
 const colors = require('colors');
 const Webpack = require('webpack');
 const Vue = require('vue');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 console.log('👴 前端老汉推车了 🚚 ...');
 console.log('[--------------项目主要依赖版本--------------]'.green);
@@ -20,17 +21,20 @@ console.log(
   ` Webpack ${Webpack.version} `.bgCyan.white,
   ` Vue ${Vue.version} `.bgGreen.white
 );
-console.log();
+console.log('\nWebpack 开始编译... 🚀'.cyan);
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: {
+    app: './src/index.ts',
+  },
   output: {
-    filename: 'index.js',
     path: path.join(process.cwd(), 'dist'),
+    filename: 'js/[name].js',
+    chunkFilename: 'js/[name].js',
+    // filename: 'js/[name].[chunkhash:8].js',
+    // chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: '/',
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[name].[chunkhash].js',
   },
   devtool: false,
   optimization: {
@@ -43,6 +47,7 @@ module.exports = {
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
+    namedChunks: true,
   },
   module: {
     rules: [
@@ -198,7 +203,7 @@ module.exports = {
     extensions: ['.ts', '.js', '.tsx', '.jsx', '.vue', '.json'],
     alias: {
       '@': path.join(process.cwd(), 'src'),
-      ':': path.join(process.cwd(), 'static'),
+      ':': path.join(process.cwd(), 'assets'),
       vue$: 'vue/dist/vue.esm.js',
     },
     modules: ['node_modules'],
@@ -217,6 +222,9 @@ module.exports = {
     new WebpackBar({
       color: '#2baaff',
     }),
+    new CopyWebpackPlugin([
+      { from: path.join(process.cwd(), 'public'), to: path.join(process.cwd(), 'dist') },
+    ]),
     // new CompressionPlugin(),
     // 用来压缩Js代码
     // new MinifyJsPlugin({

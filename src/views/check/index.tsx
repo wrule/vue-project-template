@@ -14,7 +14,8 @@ export default class ViewCheck extends Vue {
       <div class={style.com}>
         <span>检查:</span>
         <span>{this.autoId}</span>
-        <video src={bitch} controls="controls"></video>
+        {/* <video src={bitch} controls="controls"></video> */}
+        <img src="/public/panda.jpg" />
       </div>
     );
   }

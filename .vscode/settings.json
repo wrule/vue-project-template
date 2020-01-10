@@ -2,10 +2,10 @@
   "jumpToAliasFile.alias": {
     "vue$": "vue/dist/vue.esm.js",
     "@": "${folder}/src",
-    ":": "${folder}/static",
+    ":": "${folder}/assets",
   },
-  "path-autocomplete.extensionOnImport": false,
-  "path-autocomplete.includeExtension": false,
+  // "path-autocomplete.extensionOnImport": false,
+  // "path-autocomplete.includeExtension": false,
   "path-autocomplete.excludedItems": {
     // "**/*.js": { "when": "**/*.ts" }, // ignore js files if i'm inside a ts file
     "**/*.map": { "when": "**" }, // always ignore *.map files
@@ -15,6 +15,6 @@
   },
   "path-autocomplete.pathMappings": {
     "@": "${folder}/src",
-    ":": "${folder}/static",
+    ":": "${folder}/assets",
   },
 }
