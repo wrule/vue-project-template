@@ -220,7 +220,7 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new WebpackBar({
-      color: '#2baaff',
+      color: 'pink',
     }),
     new CopyWebpackPlugin([
       {
