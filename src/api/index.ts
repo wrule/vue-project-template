@@ -13,9 +13,13 @@ export const clusterIndicatorDataComparing = (params: any) => {
 };
 
 export const clusterIndicatorDataTrend = (params: any) => {
-  return http.post(`xsea/report/clusterIndicatorDataTrend`, {}, {params});
+  return http.post(`xsea/report/clusterIndicatorDataTrend`, params);
 };
 
 export const clusterRunningDataTrendCatalog = (params: any) => {
-  return http.post(`xsea/report/clusterRunningDataTrendCatalog`, {}, {params});
+  return http.post(`xsea/report/clusterRunningDataTrendCatalog`, params);
+};
+
+export const clusterRunningDataTrend = (params: any) => {
+  return http.post(`xsea/report/clusterRunningDataTrend`, params);
 };

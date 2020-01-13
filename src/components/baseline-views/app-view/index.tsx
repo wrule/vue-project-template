@@ -4,6 +4,7 @@ import XSectionBox from '../../../components/section-box';
 import XFrameButton from '../../../components/frame-button';
 import XDiffTable from './diff-table';
 import XLineChart from '../../line-chart';
+import XChartFilter from '../../chart-filter';
 import * as API from '../../../api';
 import style from './index.mod.scss';
 
@@ -64,10 +65,99 @@ export default class XAppView extends Vue {
     ],
   };
 
-  private indicatorData: any = {};
+  private trendData: any = {};
+  private filterData: any = {};
+  private detailData: any = {};
 
   private selectedClusterList: string[] = [];
-  private selectedIndicatorList: string[] = [];
+  private selectedIndicator: string = '';
+  private selectedCluster2: string = '';
+  private selectedIndicator2: string = '';
+  private selectedReportList: string[] = [];
+
+  private mock2: any = {
+    "extParams": {},
+    "object": {
+      "421702556801040384": {
+        "reportId": 421702556801040400,
+        "clusterId": "28425205957263360",
+        "indicatorType": "avgDiskReadBytesRate",
+        "runningIndicatorList": {
+          "0": [0.3263385, 0.326339, 0.326339, 0, 0, 0, 0, 0, 0],
+          "14000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "15000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "16000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "17000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "18000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "19000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "20000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "21000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "22000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "23000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "24000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "25000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "26000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0],
+          "27000": [0.326334, 0.326334, 0.326334, 0, 0, 0, 0, 0, 0]
+        }
+      },
+      "421692611665854464": {
+        "reportId": 421692611665854460,
+        "clusterId": "28425205957263360",
+        "indicatorType": "avgDiskReadBytesRate",
+        "runningIndicatorList": {
+          "0": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "1000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "2000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "3000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "4000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "5000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "6000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "7000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "8000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 8, 8, 0],
+          "9000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "10000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "11000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "12000": [0.326303, 0.326303, 0.326303, 0, 0, 0, 0, 0, 0],
+          "13000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 4, 4, 0],
+          "14000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "15000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "16000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "17000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "18000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 4, 4, 0],
+          "19000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "20000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "21000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 4, 4, 0],
+          "22000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "23000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "24000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "25000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "26000": [0.3263005, 0.326301, 0.326301, 0, 0, 0, 0, 0, 0],
+          "27000": [0.326301, 0.326301, 0.326301, 0, 0, 0, 24, 24, 0],
+          "28000": [0.326298, 0.326298, 0.326298, 0, 0, 0, 8, 8, 0]
+        }
+      },
+      "421702198926245888": {
+        "reportId": 421702198926245900,
+        "clusterId": "28425205957263360",
+        "indicatorType": "avgDiskReadBytesRate",
+        "runningIndicatorList": {
+          "17000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "18000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "19000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "20000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "21000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "22000": [0.326323, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "23000": [0.3263235, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "24000": [0.3263235, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "25000": [0.3263235, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "26000": [0.3263235, 0.326323, 0.326323, 0, 0, 0, 0, 0, 0],
+          "27000": [0.3263235, 0.326324, 0.326324, 0, 0, 0, 24, 24, 0]
+        }
+      }
+    },
+    "success": true
+  };
+
 
 
   private get autoIds(): string[] {
@@ -131,10 +221,8 @@ export default class XAppView extends Vue {
       endTime,
     });
     if (rsp.success) {
-      this.indicatorData = rsp.object;
-      console.log(this.indicatorData);
-      console.log('指标列表', this.autoIndicatorList);
-      console.log('集群列表', this.autoClusterList);
+      this.trendData = rsp.object;
+      console.log(this.trendData);
     }
   }
 
@@ -149,16 +237,114 @@ export default class XAppView extends Vue {
       endTime,
     });
     if (rsp.success) {
-      console.log(rsp.object);
+      this.filterData = rsp.object || {};
+      console.log(this.filterData);
     }
   }
 
+  /**
+   * 可选的指标类型列表
+   */
   private get autoIndicatorList(): [string, string][] {
-    return Object.entries((((this.indicatorData || {}).catalog || {}).indicatorList || {}) as any[]).map((ary) => [ary[0], ary[1]]);
+    return Object.entries((((this.trendData || {}).catalog || {}).indicatorList || {}) as any[]).map((ary) => [ary[0], ary[1]]);
+  }
+  /**
+   * 可选的集群列表
+   */
+  private get autoClusterList(): string[][] {
+    return Object.entries((((this.trendData || {}).catalog || {}).clusterMap || {}) as any[]).map((ary) => [ary[0], ary[0], ary[1]]);
+  }
+  /**
+   * 可选的指标类型列表
+   */
+  private get autoIndicatorList2(): [string, string][] {
+    return Object.entries((this.filterData.indicatorList || {}) as any[]).map((ary) => [ary[0], ary[1]]);
+  }
+  /**
+   * 可选的集群列表
+   */
+  private get autoClusterList2(): string[][] {
+    return Object.entries((this.filterData.clusterList || {}) as any[]).map((ary) => [ary[0], ary[1]]);
+  }
+  /**
+   * 可选的报告列表
+   */
+  private get autoReportList(): [string, string][] {
+    return ((this.filterData.reportList || []) as any[]).map((item) => ([item.description, item.reportId]));
+  }
+  /**
+   * 趋势数据
+   */
+  private get autoTrendData(): any {
+    return (this.trendData || {}).trendResp || {};
   }
 
-  private get autoClusterList(): [string, string][] {
-    return Object.entries((((this.indicatorData || {}).catalog || {}).clusterMap || {}) as any[]).map((ary) => [ary[0], ary[1]]);
+  @Watch('autoTrendChartData')
+  private handleAutoTrendChartDataChange(nv: any): void {
+    console.log(nv);
+  }
+
+  /**
+   * 当前过滤条件下的图表数据
+   */
+  private get autoTrendChartData(): any[] {
+    const result: any[] = [];
+    const trendData = this.autoTrendData[this.selectedIndicator] || {};
+    this.selectedClusterList.forEach((cluster) => {
+      const clusterData = trendData[cluster];
+      if (clusterData) {
+        const list = (Object.entries(clusterData) as any[][]).map((ary) => ({
+          type: cluster,
+          time: Number(ary[0]),
+          value: Number(ary[1][0]),
+          data: ary[1][1],
+        }));
+        list.sort((a, b) => a.time - b.time);
+        result.push(...list);
+      }
+    });
+    return result;
+  }
+  /**
+   * 当前图表2的过滤条件
+   */
+  private get autoFilterParams(): any {
+    return {
+      indicatorName: this.selectedIndicator2,
+      clusterId: this.selectedCluster2,
+      reportIdList: this.selectedReportList,
+    };
+  }
+  /**
+   * 详情对比曲线数据
+   */
+  private get autoDetailChartData(): any[] {
+    const result: any[] = [];
+    Object.entries(this.detailData || {}).forEach((ary) => {
+      const type = ary[0];
+      const list = (Object.entries((ary[1] as any).runningIndicatorList || {}) as any[][]).map((item) => ({
+        type,
+        time: Number(item[0]),
+        value: item[1][0],
+      }));
+      result.push(...list);
+    });
+    return result;
+  }
+
+  @Watch('autoFilterParams')
+  private async handleAutoFilterParamsChange(nv: any): Promise<void> {
+    if (
+      nv.indicatorName &&
+      nv.clusterId &&
+      nv.reportIdList.length > 0
+    ) {
+      const rsp: any = await API.clusterRunningDataTrend(nv);
+      if (rsp.success) {
+        this.detailData = this.mock2.object;
+        console.log(this.detailData);
+      }
+    }
   }
 
   public mounted(): void {
@@ -166,12 +352,12 @@ export default class XAppView extends Vue {
     this.updateThread(
       '44815730543165440',
       '2019-01-01 12:00:00',
-      '2020-01-10 12:00:00'
+      '2020-01-09 12:00:00'
     );
     this.updateFilter(
       '44815730543165440',
       '2019-01-01 12:00:00',
-      '2020-01-10 12:00:00'
+      '2020-01-09 12:00:00'
     );
   }
 
@@ -192,30 +378,62 @@ export default class XAppView extends Vue {
           />
         </XSectionBox>
         <XSectionBox title="历史趋势跟踪分析">
-          <span>指标: </span>
-          <el-select
-            style="width: 250px"
-            placeholder="请选择指标"
-            v-model={this.selectedIndicatorList}
-            multiple
-            filterable
-            collapse-tags>
-            {this.autoIndicatorList.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
-          </el-select>
-          <span>集群: </span>
-          <el-select
-            style="width: 250px"
-            placeholder="请选择集群"
-            v-model={this.selectedClusterList}
-            multiple
-            filterable
-            collapse-tags>
-            {this.autoClusterList.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
-          </el-select>
-          <XLineChart />
+          <XChartFilter>
+            <span>指标: </span>
+            <el-select
+              style="width: 150px"
+              placeholder="请选择指标"
+              clearable
+              v-model={this.selectedIndicator}>
+              {this.autoIndicatorList.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
+            </el-select>
+            <span>集群: </span>
+            <el-select
+              style="width: 250px"
+              placeholder="请选择集群"
+              v-model={this.selectedClusterList}
+              multiple
+              filterable
+              collapse-tags>
+              {this.autoClusterList.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
+            </el-select>
+          </XChartFilter>
+          <XLineChart
+            data={this.autoTrendChartData}
+          />
         </XSectionBox>
         <XSectionBox title="详情对比">
-          <XLineChart />
+        <XChartFilter>
+            <span>集群: </span>
+            <el-select
+              style="width: 150px"
+              placeholder="请选择集群"
+              clearable
+              v-model={this.selectedCluster2}>
+              {this.autoClusterList2.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
+            </el-select>
+            <span>指标: </span>
+            <el-select
+              style="width: 150px"
+              placeholder="请选择指标"
+              clearable
+              v-model={this.selectedIndicator2}>
+              {this.autoIndicatorList2.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
+            </el-select>
+            <span>版本: </span>
+            <el-select
+              style="width: 250px"
+              placeholder="请选择报告版本"
+              v-model={this.selectedReportList}
+              multiple
+              filterable
+              collapse-tags>
+              {this.autoReportList.map((ary) => <el-option value={ary[1]} label={ary[0]}></el-option>)}
+            </el-select>
+          </XChartFilter>
+          <XLineChart
+            data={this.autoDetailChartData}
+          />
         </XSectionBox>
       </div>
     );

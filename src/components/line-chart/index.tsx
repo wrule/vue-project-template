@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { VNode } from 'vue';
 import G2 from '@antv/g2';
 import style from './index.mod.scss';
@@ -7,20 +7,26 @@ const LINE_COLORS = ['#FF9E6F', '#46D8D3', '#2BAAFF', '#2B7CFF', '#F55E5E'];
 
 @Component
 export default class XLineChart extends Vue {
+  @Prop({ default() { return []; } }) private readonly data!: any[];
   private chart!: G2.Chart;
 
-  private get autoMockData(): any[] {
-    const now = Number(new Date());
-    const times = Array(50).fill(0).map((num, index) => now + index * 1000);
-    const result: any[] = [];
-    Array(5).fill(0).map((num, index) => {
-      result.push(...(times.map((time) => ({
-        type: `类型${index + 1}`,
-        time,
-        value: Math.random() * 100 + 20,
-      }))));
-    });
-    return result;
+  // private get autoMockData(): any[] {
+  //   const now = Number(new Date());
+  //   const times = Array(50).fill(0).map((num, index) => now + index * 1000);
+  //   const result: any[] = [];
+  //   Array(5).fill(0).map((num, index) => {
+  //     result.push(...(times.map((time) => ({
+  //       type: `类型${index + 1}`,
+  //       time,
+  //       value: Math.random() * 100 + 20,
+  //     }))));
+  //   });
+  //   return result;
+  // }
+
+  @Watch('data')
+  private handleDataChange(nv: any[]): void {
+    this.chart.changeData(nv);
   }
 
   private initChart(): void {
@@ -30,10 +36,10 @@ export default class XLineChart extends Vue {
       forceFit: true,
       padding: 'auto',
     });
-    this.chart.source(this.autoMockData);
+    this.chart.source(this.data);
     this.chart.scale({
       time: {
-        type: 'time',
+        type: 'timeCat',
         tickCount: 8,
       },
       value: {
