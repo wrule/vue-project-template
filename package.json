@@ -28,6 +28,7 @@
     "css-loader": "^3.4.0",
     "element-ui": "^2.13.0",
     "html-webpack-plugin": "^3.2.0",
+    "jsdifflib": "^1.1.0",
     "node-sass": "^4.13.0",
     "postcss": "^7.0.26",
     "postcss-import": "^12.0.1",

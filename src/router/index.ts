@@ -16,5 +16,10 @@ export default new VueRouter({
       path: '/scene/:id',
       component: () => import('../views/scene-detail'),
     },
+    {
+      name: 'view-test-detail',
+      path: '/test',
+      component: () => import('../views/test-page'),
+    },
   ],
 });
