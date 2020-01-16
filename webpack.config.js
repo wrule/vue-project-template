@@ -23,6 +23,20 @@ module.exports = {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+      // scss文件
+      {
+        test: /\.scss$/i,
+        exclude: /\.mod.scss$/i,
+        use: [
+          // MiniCssExtractPlugin.loader,
+          cacheLoaderFactory('scss-loader'),
+          // 'thread-loader',
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+        ],
+      },
       // {
       //   test: /\.scss$/,
       //   use: ['style-loader', 'css-loader', 'sass-loader'],
