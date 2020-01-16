@@ -13,14 +13,14 @@ export default new VueRouter({
       component: ViewIndex,
     },
     {
-      name: 'view-check',
-      path: '/check/:id',
-      component: () => import('@/views/check'),
+      name: 'view-qq',
+      path: '/qq/:id',
+      component: () => import('@/views/qq'),
     },
     {
-      name: 'view-query',
-      path: '/query/:id',
-      component: () => import('@/views/query'),
+      name: 'view-group',
+      path: '/group/:id',
+      component: () => import('@/views/group'),
     },
   ],
 });
