@@ -89,9 +89,9 @@ export default class TextDiff extends Vue {
 
   @Watch('autoDiffText', { immediate: true })
   private handleAutoDiffTextChange(nv: [string, string]): void {
-    console.log(this.autoDiffOpcodes);
-    console.log(this.autoBaseViewLines);
-    console.log(this.autoNewViewLines);
+    // console.log(this.autoDiffOpcodes);
+    // console.log(this.autoBaseViewLines);
+    // console.log(this.autoNewViewLines);
   }
 
   /**

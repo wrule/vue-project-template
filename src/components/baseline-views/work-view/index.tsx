@@ -1,6 +1,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { VNode } from 'vue';
-import XSectionBox from '../../../components/section-box';
+import XSectionBox from '../../section-box2';
 import XFrameButton from '../../../components/frame-button';
 import XDiffTable from './diff-table';
 import style from './index.mod.scss';

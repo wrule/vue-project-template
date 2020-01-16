@@ -13,13 +13,18 @@ export default new VueRouter({
     },
     {
       name: 'view-scene-detail',
-      path: '/scene/:id',
-      component: () => import('../views/scene-detail'),
+      path: '/scene2/:id',
+      component: () => import('../views/scene-detail2'),
     },
     {
       name: 'view-test-detail',
       path: '/test',
       component: () => import('../views/test-page'),
+    },
+    {
+      name: 'view-scene-detail',
+      path: '/scene/:id',
+      component: () => import('../views/scene-detail'),
     },
   ],
 });

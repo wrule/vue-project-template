@@ -1,0 +1,40 @@
+.com {
+  font-size: 14px;
+  color: #333;
+  .header {
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      height: 100%;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      .mark {
+        display: inline-block;
+        width: 4px;
+        height: 13px;
+        border-radius: 2px;
+        margin-right: 6px;
+        margin-top: -1px;
+      }
+      .title {
+        font-size: 14px;
+        color: #666666;
+      }
+    }
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 12px;
+    }
+  }
+  .content {
+    box-sizing: border-box;
+    border: 1px solid #E6E6E6;
+    padding: 10px;
+    min-height: 100px;
+  }
+}

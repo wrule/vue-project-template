@@ -3,9 +3,10 @@ import { VNode } from 'vue';
 import style from './index.mod.scss';
 import ComStudent from '../student';
 import Student from '../student/student';
-import XSectionBox from '../components/section-box';
+import XSectionBox from '../components/section-box2';
 import XFrameButton from '../components/frame-button';
 import XViewTabs from '../components/view-tabs';
+import './index.scss';
 
 @Component
 export default class App extends Vue {
