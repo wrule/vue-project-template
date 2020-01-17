@@ -1,0 +1,27 @@
+.com {
+  display: flex;
+  > ul {
+    display: inline-flex;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    height: 32px;
+    font-size: 14px;
+    > li {
+      box-sizing: border-box;
+      height: 100%;
+      line-height: 32px;
+      color: #999;
+      padding: 0px 4px 0px 4px;
+      cursor: pointer;
+      user-select: none;
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+      &.active {
+        color: #333;
+        border-bottom: solid 3px #2baaff;
+      }
+    }
+  }
+}

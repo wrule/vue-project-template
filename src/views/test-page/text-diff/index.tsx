@@ -145,7 +145,7 @@ export default class TextDiff extends Vue {
           <div class={style.inner}>
             {this.autoBaseViewLines.map((item) => <div class={style.line} style={{'background-color': item[2]}}>
               <div class={style.linenum}>{item[0] >= 0 ? item[0] + 1 : ''}</div>
-              <div class={style.linetext}>{item[1]}</div>
+              <pre class={style.linetext}>{item[1]}</pre>
             </div>)}
           </div>
         </div>

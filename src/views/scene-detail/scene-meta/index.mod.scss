@@ -1,4 +1,19 @@
 .com {
-  padding: 20px;
+  margin: 0px;
+  padding: 10px 20px 10px 20px;
+  list-style-type: none;
   border: 1px solid #f0f1f5;
+  font-size: 12px;
+  color: #666;
+  > li {
+    height: 34px;
+    > div {
+      display: inline-block;
+      height: 100%;
+      line-height: 34px;
+    }
+    > .title {
+      width: 64px;
+    }
+  }
 }
